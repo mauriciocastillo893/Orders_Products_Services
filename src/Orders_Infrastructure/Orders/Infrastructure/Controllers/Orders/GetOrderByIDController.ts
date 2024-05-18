@@ -1,7 +1,6 @@
-import signale from "signale";
 import { Request, Response } from 'express';
-import { GetOrderByIDUseCase } from "../../Application/UseCases/Order/GetOrderByIDUseCase";
-import { OrderNotFound } from "../Services/OrderNotFound";
+import { GetOrderByIDUseCase } from "../../../Application/UseCases/Order/GetOrderByIDUseCase";
+import { OrderNotFound } from "../../Services/OrderNotFound";
 
 export class GetOrderByIDController{
     constructor(private getOrderByIDUseCase : GetOrderByIDUseCase){}
@@ -12,11 +11,10 @@ export class GetOrderByIDController{
             return res.status(200).send(order);
 
         }catch(err){
-            signale.error("An error occurred while trying to get an Order by ID", err);
             if(err instanceof OrderNotFound) {
-                return res.status(404).send();
+                return res.status(404).json({message: `Order with id ${req.params.id} not found`});
             }
-            return res.status(500).send();
+            return res.status(500).json({message: `Error getting order with id ${req.params.id}`});
         }
     }
 }

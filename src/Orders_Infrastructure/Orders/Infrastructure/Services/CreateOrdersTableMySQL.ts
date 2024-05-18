@@ -1,7 +1,7 @@
 import { Connection } from "mysql2/typings/mysql/lib/Connection";
 import signale from "signale";
 
-export async function createTableOrder(tableName: string, MySQLConnection: Connection) : Promise<void>{
+export async function createOrderTable(tableName: string, MySQLConnection: Connection) : Promise<void>{
     if(!MySQLConnection){
         signale.error("MySQL connection is not available.");
         return Promise.reject("MySQL connection is not available.");

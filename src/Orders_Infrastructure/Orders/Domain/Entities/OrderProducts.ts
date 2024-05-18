@@ -1,6 +1,7 @@
 export class OrderProducts{
     constructor(
-        readonly id: string,
+        // private readonly id: string,
+        readonly order_id: string,
         readonly product_id: string,
         readonly price: number,
         readonly quantity: number,

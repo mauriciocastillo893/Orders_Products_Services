@@ -1,9 +1,9 @@
 import { OrderProducts } from "../Entities/OrderProducts";
 
 export interface OrderProductsRepository {
-    getOrderProductByID(id: string): Promise<OrderProducts>;
+    getOrderProductsByOrderID(id: string): Promise<OrderProducts>;
     getAllOrderProducts(): Promise<OrderProducts[]>;
-    createOrderProduct(orderProduct: OrderProducts): Promise<OrderProducts | null>;
-    updateOrderProduct(id: string): Promise<OrderProducts | null>;
-    deleteOrderProduct(id: string): Promise<void>;
+    createOrderProductsByOrderID(orderID: string, orderProduct: OrderProducts): Promise<OrderProducts | null>;
+    updateOrderProductsByOrderID(id: string, orderProduct: OrderProducts): Promise<OrderProducts | null>;
+    deleteOrderProductsByOrderID(id: string): Promise<void>;
 }
